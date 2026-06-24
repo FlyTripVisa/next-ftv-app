@@ -1,9 +1,36 @@
 import { NextResponse } from 'next/server';
 
+// ফাইল অপারেশন বা টুলস সংক্রান্ত GET রিকোয়েস্ট হ্যান্ডলার
 export async function GET() {
-  return NextResponse.json({ tools: ["visa-check", "status-update"] });
+  try {
+    return NextResponse.json({
+      success: true,
+      message: "Tools endpoint is operational",
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, error: "Failed to process request" },
+      { status: 500 }
+    );
+  }
 }
-"overrides": {
-  "glob": "^11.0.1",
-  "uuid": "^11.1.0"
+
+// ফাইল অপারেশন বা টুলস সংক্রান্ত POST রিকোয়েস্ট হ্যান্ডলার
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    
+    // এখানে আপনার ফাইল অপারেশন লজিক ইমপ্লিমেন্ট করুন
+    return NextResponse.json({
+      success: true,
+      message: "Data received successfully",
+      receivedData: body,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, error: "Invalid JSON or Server Error" },
+      { status: 400 }
+    );
+  }
 }
