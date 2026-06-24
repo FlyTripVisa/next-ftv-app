@@ -2,7 +2,6 @@
   "name": "next-ftv-app",
   "description": "Full-stack web application with Next.js and Cloudflare Workers AI.",
   "private": true,
-
   "cloudflare": {
     "label": "Next.js Framework Starter",
     "products": ["Workers"],
@@ -11,15 +10,13 @@
     "preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/4e913a56-fd99-4372-0586-9f1364173100/preview",
     "publish": true
   },
-
   "dependencies": {
     "@opennextjs/cloudflare": "1.14.0",
-    "@huggingface/chat-ui": "^0.3.0",        // ✅ Added Hugging Face Chat UI
+    "@huggingface/chat-ui": "^0.3.0",
     "next": "16.0.7",
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },
-
   "devDependencies": {
     "@eslint/eslintrc": "3",
     "@tailwindcss/postcss": "4.1.17",
@@ -32,15 +29,12 @@
     "typescript": "5.9.3",
     "wrangler": "4.88.0"
   },
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "check": "npm run build && tsc",
-
-    // ✅ Cloudflare Workers AI integration
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
