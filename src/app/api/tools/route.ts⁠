@@ -1,0 +1,9 @@
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  return NextResponse.json({ tools: ["visa-check", "status-update"] });
+}
+"overrides": {
+  "glob": "^11.0.1",
+  "uuid": "^11.1.0"
+}
