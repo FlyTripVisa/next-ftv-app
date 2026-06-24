@@ -1,126 +1,28 @@
-# macOS
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+.open-next/
+dist/
+out/
+
+# Environment
+.env*.local
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# OS
 .DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-*.icloud
+Thumbs.db
 
-# Git merge backups
-*.orig
-*.BACKUP.*
-*.BASE.*
-*.LOCAL.*
-*.REMOTE.*
-*_BACKUP_*.txt
-*_BASE_*.txt
-*_LOCAL_*.txt
-*_REMOTE_*.txt
-
-# Node
-logs
+# Logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-.pnpm-debug.log*
-report.*.json
-pids
-*.pid
-*.seed
-*.pid.lock
-lib-cov
-coverage
-*.lcov
-.nyc_output
-.grunt
-bower_components
-.lock-wscript
-build/Release
-node_modules/
-jspm_packages/
-web_modules/
-*.tsbuildinfo
-.npm
-.eslintcache
-.stylelintcache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-.node_repl_history
-*.tgz
-.yarn-integrity
-.cache
-.parcel-cache
 
-# Environment files
-.env*
-!.env.example
-.dev.vars*
-!.dev.vars.example
-
-# Next.js
-.next
-out
-
-# Nuxt.js
-.nuxt
-dist
-
-# Gatsby
-.cache/
-
-# Vuepress
-.vuepress/dist
-.temp
-
-# Docusaurus
-.docusaurus
-
-# Serverless
-.serverless/
-
-# FuseBox
-.fusebox/
-
-# DynamoDB Local
-.dynamodb/
-
-# TernJS
-.tern-port
-
-# VSCode testing
-.vscode-test
-
-# Yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-
-# Webpack
-.webpack/
-
-# SvelteKit
-.svelte-kit
-
-# Wrangler
-.wrangler/
-
-# OpenNext
-.open-next/
+# Types
+cloudflare-env.d.ts
