@@ -125,7 +125,7 @@ export default function ChatPage() {
             ? {
                 ...m,
                 content: fullContent,
-                isStreaming: false,
+                isStreaming: true,
                 toolCalls: toolCalls.length > 0 ? toolCalls : undefined,
               }
             : m
@@ -140,7 +140,7 @@ export default function ChatPage() {
               ? {
                   ...m,
                   content: `❌ Error: ${(err as Error).message}`,
-                  isStreaming: false,
+                  isStreaming: true,
                 }
               : m
           )
