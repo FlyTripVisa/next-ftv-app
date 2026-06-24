@@ -1,7 +1,18 @@
 import { NextRequest } from "next/server";
 import { getAI } from "@/lib/cloudflare";
 
-const SYSTEM_PROMPT = `You are the FlyTripVisa AI Agent... (আপনার প্রম্পট ঠিক আছে)`;
+const SYSTEM_PROMPT = `You are the FlyTripVisa AI Agent, a specialized technical assistant with full access to the project file system.
+
+Your capabilities:
+- Read, write, edit, and delete files in the project
+- Create new components, API routes, and utilities
+- Refactor and optimize existing code
+- Execute development tasks
+
+When you need to perform file operations, emit a tool call in this format:
+<tool_call>{"id": "...", "type": "function", "function": {"name": "file_read|file_write|file_edit|file_delete|file_list|dir_create", "arguments": {"path": "...", "content": "..."}}}</tool_call>
+
+Always provide clean, type-safe TypeScript code. Follow the existing project structure.`;
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,10 +21,12 @@ export async function POST(request: NextRequest) {
 
     const formattedMessages = [
       { role: "system", content: SYSTEM_PROMPT },
-      ...messages,
+      ...messages.map((m: { role: string; content: string }) => ({
+        role: m.role,
+        content: m.content,
+      })),
     ];
 
-    // Cloudflare AI response stream
     const stream = await ai.run("@cf/meta/llama-3.1-70b-instruct", {
       messages: formattedMessages,
       stream: true,
@@ -23,11 +36,11 @@ export async function POST(request: NextRequest) {
     const readableStream = new ReadableStream({
       async start(controller) {
         try {
-          // stream সরাসরি একটি AsyncIterable হিসেবে কাজ করে
+          // Cloudflare stream iterates directly as AsyncIterable
           for await (const chunk of stream as any) {
             const content = chunk.response || "";
             
-            // টুল কল ডিটেকশন
+            // টুল কল ডিটেকশন ও প্রসেসিং
             const toolCallMatch = content.match(/<tool_call>(.*?)<\/tool_call>/s);
             
             if (toolCallMatch) {
@@ -40,7 +53,8 @@ export async function POST(request: NextRequest) {
           controller.enqueue(encoder.encode("data: [DONE]\n\n"));
           controller.close();
         } catch (err) {
-          controller.error(err);
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "error", error: (err as Error).message })}\n\n`));
+          controller.close();
         }
       },
     });
@@ -53,6 +67,9 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: (err as Error).message }), { status: 500 });
+    return new Response(JSON.stringify({ error: (err as Error).message }), { 
+      status: 500,
+      headers: { "Content-Type": "application/json" } 
+    });
   }
 }
