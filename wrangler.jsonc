@@ -1,39 +1,17 @@
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "next-ftv-app",
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2025-10-08",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "global_fetch_strictly_public"
-  ],
-
-  // Serve static assets
+  "name": "flytripvisa",
+  "compatibility_date": "2026-06-25",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "binding": "ASSETS",
-    "directory": ".open-next/assets"
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
   },
-
-  // Observability
+  "ai": {
+    "binding": "AI"
+  },
   "observability": {
     "enabled": true
-  },
-
-  "upload_source_maps": true,
-
-  // 🔑 Bindings for Workers AI
-  "ai": {
-    "binding": "AI",
-    "model": "@cf/meta/llama-3-8b-instruct"
-  },
-
-  // Optional: environment variables for Hugging Face token
-  "vars": {
-    "HF_TOKEN": "${HF_TOKEN}",
-    "ENV": "production"
   }
 }
