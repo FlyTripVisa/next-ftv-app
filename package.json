@@ -1,42 +1,33 @@
 {
-  "name": "next-ftv-app",
-  "description": "Full-stack web application with Next.js and Cloudflare Workers AI.",
+  "name": "flytripvisa",
+  "version": "1.0.0",
   "private": true,
-  "cloudflare": {
-    "label": "Next.js Framework Starter",
-    "products": ["Workers"],
-    "categories": ["Web Frameworks", "AI Integration"],
-    "preview_icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/05eee9e0-2c04-48fd-11bf-84e65f839000/public",
-    "preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/4e913a56-fd99-4372-0586-9f1364173100/preview",
-    "publish": true
-  },
-  "dependencies": {
-    "@opennextjs/cloudflare": "1.14.0",
-    "@huggingface/chat-ui": "^0.3.0",
-    "next": "16.0.7",
-    "react": "19.2.1",
-    "react-dom": "19.2.1"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "3",
-    "@tailwindcss/postcss": "4.1.17",
-    "@types/node": "24.10.1",
-    "@types/react": "19.2.7",
-    "@types/react-dom": "19.2.3",
-    "eslint": "9.39.2",
-    "eslint-config-next": "16.0.7",
-    "tailwindcss": "4.1.17",
-    "typescript": "5.9.3",
-    "wrangler": "4.88.0"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check": "npm run build && tsc",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+  },
+  "dependencies": {
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@cloudflare/ai": "^1.2.0"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.0.0",
+    "@cloudflare/workers-types": "^4.20260625.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "postcss": "^8.5.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.3.0"
   }
 }
