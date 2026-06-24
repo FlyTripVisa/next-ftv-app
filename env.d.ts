@@ -9,3 +9,12 @@ declare namespace NodeJS {
     NODE_ENV: "development" | "production" | "test";
   }
 }
+declare namespace NodeJS {
+  interface ProcessEnv {
+    NEXT_PUBLIC_CF_TOKEN: string;
+    CLOUDFLARE_ACCOUNT_ID: string;
+    NEXT_PUBLIC_HF_TOKEN?: string;
+    NODE_ENV: "development" | "production" | "test";
+  }
+}
+
