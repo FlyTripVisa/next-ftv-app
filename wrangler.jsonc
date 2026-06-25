@@ -32,4 +32,23 @@
     "enabled": true
   }
 }
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "next-ftv-app",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-06-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "NEXT_CACHE_KV",
+      "id": "YOUR_KV_NAMESPACE_ID"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  }
+}
 
