@@ -18,7 +18,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "flytripvisa_db",
+  "name": "next-ftv-app",
   "compatibility_date": "2026-06-25",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
