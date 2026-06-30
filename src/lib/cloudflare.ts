@@ -1,21 +1,11 @@
-import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
-// কনটেক্সট ক্যাশ করার জন্য একটি ভেরিয়েবল
-let cachedContext: any = null;
-
-async function getCtx() {
-  if (!cachedContext) {
-    cachedContext = await getCloudflareContext({ async: true });
-  }
-  return cachedContext;
-}
-
-export async function getAI() {
-  const ctx = await getCtx();
-  return ctx.env.AI;
-}
-
-export async function getAssets() {
-  const ctx = await getCtx();
-  return ctx.env.ASSETS;
+export function getCloudflareContext() {
+  const ctx = getRequestContext();
+  return {
+    ai: ctx.env.AI,
+    db: ctx.env.DB,
+    kv: ctx.env.KV_BINDING,
+    r2: ctx.env.PROJECT_FILES,
+  };
 }
