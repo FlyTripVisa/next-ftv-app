@@ -30,4 +30,36 @@
     "directory": "./public",
     "not_found": "index.html"
   }
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/configuration/",
+  "name": "flytripvisa-ai",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "ai": { "binding": "AI" },
+  "account_id": "b73b80fa62deef032d3c08248cf2f30b",
+  "kv_namespaces": [
+    {
+      "binding": "KV_BINDING",
+      "id": "cc79304937ff4daa9d6debae85da8be9"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "flytripvisa_db",
+      "database_id": "26c063fe-1868-44b1-9a8c-a68eecfa18e7"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "PROJECT_FILES",
+      "bucket_name": "flytrip-project-files"
+    }
+  ],
+  "assets": {
+    "directory": "./public",
+    "not_found": "index.html"
+  }
 }
