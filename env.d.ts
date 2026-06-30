@@ -1,13 +1,16 @@
-/// <reference types="next" />
 /// <reference types="@cloudflare/workers-types" />
+
+interface Env {
+  AI: any;
+  DB: D1Database;
+  KV_BINDING: KVNamespace;
+  PROJECT_FILES: R2Bucket;
+}
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    NEXT_PUBLIC_APP_NAME: string;
+    NODE_ENV: "development" | "production" | "test";
+    CLOUDFLARE_ACCOUNT_ID: string;
+    CLOUDFLARE_API_TOKEN: string;
   }
-}
-
-interface CloudflareEnv {
-  AI: import("@cloudflare/ai").Ai;
-  ASSETS: { fetch: typeof fetch };
 }
