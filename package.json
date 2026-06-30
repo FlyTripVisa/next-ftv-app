@@ -1,13 +1,15 @@
 {
-  "name": "flytripvisa-ai",
+  "name": "next-ftv-app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "deploy": "opennextjs-cloudflare build && wrangler deploy",
-    "cf-dev": "opennextjs-cloudflare build && wrangler dev"
+    "deploy": "wrangler deploy",
+    "cf-dev": "wrangler dev",
+    "cf-build": "opennextjs-cloudflare build",
+    "cf-deploy": "opennextjs-cloudflare build && wrangler deploy"
   },
   "dependencies": {
     "@cloudflare/ai": "^1.0.0",
@@ -17,7 +19,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250624.0",
-    "@opennextjs/cloudflare": "^0.5.0",
+    "@opennextjs/cloudflare": "^0.3.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
