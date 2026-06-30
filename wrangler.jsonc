@@ -1,6 +1,6 @@
 {
   "$schema": "https://developers.cloudflare.com/workers/wrangler/configuration/",
-  "name": "flytripvisa-ai",
+  "name": "next-ftv-app",
   "main": "src/index.ts",
   "compatibility_date": "2025-06-24",
   "compatibility_flags": ["nodejs_compat"],
@@ -32,7 +32,7 @@
   }
 {
   "$schema": "https://developers.cloudflare.com/workers/wrangler/configuration/",
-  "name": "flytripvisa-ai",
+  "name": "next-ftv-app",
   "main": "src/index.ts",
   "compatibility_date": "2025-06-24",
   "compatibility_flags": ["nodejs_compat"],
