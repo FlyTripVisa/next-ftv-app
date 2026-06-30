@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  experimental: {
+    turbo: {
+      rules: {
+        "*.json": {
+          loaders: ["json-loader"],
+        },
+      },
+    },
+  },
   images: {
     unoptimized: true,
   },
